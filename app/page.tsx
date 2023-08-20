@@ -1,13 +1,16 @@
-import { User } from '@prisma/client';
-import Users from '@app/components/users';
+import { getCurrentUser } from "@app/auth/helpers"
 
 // export const dynamic = 'force-dynamic'
 
 export default async function Home() {
+
+  const user = await getCurrentUser()
+
   return (
     <>
-      <h1>Users</h1>
-      {/* <Users /> */}
+      <p>
+        Current User: {JSON.stringify(user)}
+      </p>
     </>
   )
 }
