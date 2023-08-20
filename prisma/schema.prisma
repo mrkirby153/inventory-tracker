@@ -11,17 +11,60 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  posts Post[]
+  id             String     @id @default(cuid())
+  email          String     @unique
+  name           String?
+  ownedLocations Location[]
 }
 
-model Post {
-  id        Int     @id @default(autoincrement())
-  title     String
-  content   String?
-  published Boolean @default(false)
-  author    User    @relation(fields: [authorId], references: [id])
-  authorId  Int
+model Location {
+  id       String @id @default(cuid())
+  name     String
+  location String
+  ownerId  String
+  owner    User   @relation(fields: [ownerId], references: [id])
+  items    Item[]
+}
+
+enum ItemState {
+  ACTIVE
+  LOST
+  DESTROYED
+  ARCHIVED
+}
+
+model Item {
+  id         String         @id @default(cuid())
+  name       String
+  locationId String
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt
+  state      ItemState      @default(ACTIVE)
+  location   Location       @relation(fields: [locationId], references: [id])
+  history    ItemHistory[]
+  metadata   ItemMetadata[]
+}
+
+enum HistoryType {
+  CREATE
+  MODIFY
+  DELETE
+  MOVE // Move to another location
+}
+
+model ItemHistory {
+  id        String      @id @default(cuid())
+  itemId    String
+  createdAt DateTime    @default(now())
+  action    HistoryType
+  data      String
+  item      Item        @relation(fields: [itemId], references: [id])
+}
+
+model ItemMetadata {
+  id     String @id @default(cuid())
+  itemId String
+  key    String
+  value  String
+  item   Item   @relation(fields: [itemId], references: [id])
 }
