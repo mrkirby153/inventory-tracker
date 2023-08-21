@@ -8,8 +8,9 @@ export interface AuthenticatedRequest extends NextRequest {
 }
 
 const unauthenticatedRoutes = [
+    "/_next/", // next.js assets
     "/api/auth/login",
-    "/auth/login"
+    "/auth/login",
 ]
 
 export async function middleware(req: NextRequest) {
@@ -21,7 +22,8 @@ export async function middleware(req: NextRequest) {
         token = req.headers.get("Authorization")?.substring(7);
     }
 
-    if (unauthenticatedRoutes.includes(req.nextUrl.pathname)) {
+    const isUnauthenticatedRoute = unauthenticatedRoutes.some(route => req.nextUrl.pathname.startsWith(route))
+    if (isUnauthenticatedRoute) {
         return;
     }
 

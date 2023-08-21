@@ -1,10 +1,12 @@
+import { redirect } from "next/navigation";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
-    console.log("YAY")
-    const response = new NextResponse("OK", {
-        status: 200,
-    });
+
+    const url = req.nextUrl.clone();
+    url.pathname = "/";
+
+    const response = NextResponse.redirect(url);
 
     await Promise.all([
         response.cookies.set({
@@ -13,6 +15,5 @@ export async function GET(req: NextRequest) {
             maxAge: -1,
         })
     ]);
-
-    return response;
+    return response
 }
