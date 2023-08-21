@@ -3,8 +3,9 @@ import { cookies, headers } from "next/headers";
 import { verifyJWT } from "./jwt";
 import { getUser } from "@app/db/users";
 import { redirect } from "next/navigation";
+import { cache } from "react";
 
-export async function getCurrentUser(requireValidUser: boolean = true) {
+export const getCurrentUser = cache(async (requireValidUser: boolean = true) => {
   let token: string | undefined;
   const cookieStore = cookies();
   const allHeaders = headers();
@@ -27,4 +28,4 @@ export async function getCurrentUser(requireValidUser: boolean = true) {
     redirect("/auth/login");
   }
   return user;
-}
+});
