@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 export default async function LoginPage() {
-    const currentUser = await getCurrentUser();
+    const currentUser = await getCurrentUser(false);
 
     if (currentUser) {
         redirect("/");

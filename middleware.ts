@@ -13,6 +13,11 @@ const unauthenticatedRoutes = [
     "/auth/login",
 ]
 
+
+function redirectToLogin(req: NextRequest, prev: string | null = null) {
+    return NextResponse.redirect(new URL(`/auth/login?${new URLSearchParams({ prev: prev || req.nextUrl.pathname })}`, req.url))
+}
+
 export async function middleware(req: NextRequest) {
     let token: string | undefined;
 
@@ -35,7 +40,6 @@ export async function middleware(req: NextRequest) {
     try {
         if (token) {
             const { sub } = await verifyJWT<{ sub: string }>(token);
-            response.headers.set("X-USER-ID", sub);
             (req as AuthenticatedRequest).user = { id: sub };
         }
     } catch (error) {
@@ -45,6 +49,6 @@ export async function middleware(req: NextRequest) {
             }, { status: 401 })
         }
 
-        return NextResponse.redirect(new URL(`/auth/login?${new URLSearchParams({ prev: "/" })}`, req.url))
+        return redirectToLogin(req, "/");
     }
 }
