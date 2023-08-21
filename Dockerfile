@@ -33,6 +33,11 @@ COPY --from=builder --link /app/public ./public
 COPY --from=builder --link --chown=1001:1001 /app/.next/standalone ./
 COPY --from=builder --link --chown=1001:1001 /app/.next/static ./.next/static
 
+COPY ./startup.sh ./
+COPY prisma/ ./prisma/
+RUN npm install -g prisma
+RUN chmod +x ./startup.sh
+
 USER nextjs
 
 EXPOSE 3000
@@ -40,4 +45,4 @@ EXPOSE 3000
 ENV PORT 3000
 ENV HOSTNAME localhost
 
-CMD ["node", "server.js"]
+CMD ["./startup.sh"]
