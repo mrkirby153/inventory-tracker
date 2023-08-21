@@ -16,7 +16,13 @@ export async function getCurrentUser(requireValidUser: boolean = true) {
     if (!token) {
         return null;
     }
-    const { sub } = await verifyJWT<{ sub: string }>(token);
+    let sub: string = "";
+    try {
+        sub = (await verifyJWT<{ sub: string }>(token)).sub;
+    } catch (error) {
+        if (requireValidUser)
+            redirect("/auth/login");
+    }
     let user = await getUser(sub);
     if (requireValidUser && !user) {
         redirect("/auth/login");

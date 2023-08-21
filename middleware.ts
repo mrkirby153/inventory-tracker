@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verifyJWT } from "@app/auth/jwt";
+import { redirect } from "next/dist/server/api-utils";
 
 export interface AuthenticatedRequest extends NextRequest {
     user: {
@@ -34,7 +35,7 @@ export async function middleware(req: NextRequest) {
 
     if (!token) {
         let path = new URL(req.url).pathname
-        return NextResponse.redirect(new URL(`/auth/login?${new URLSearchParams({ prev: path })}`, req.url))
+        return redirectToLogin(req, path);
     }
     const response = NextResponse.next();
     try {
