@@ -16,12 +16,11 @@ export default async function LoginPage() {
 
   return (
     <>
-      <div className="flex min-h-full flex-col justify-center">
-        <div className="mx-auto w-full max-w-md rounded border border-gray-200 px-8 py-8">
-          <h1 className="mb-4 text-2xl font-bold">Login</h1>
-          <Login />
-        </div>
-      </div>
+      <h1 className="mb-4 text-2xl font-bold">Log In</h1>
+      <Login />
+      <span className="mt-2 block hover:underline">
+        <a href="/auth/register" className="text-blue-500">Register</a>
+      </span>
     </>
   );
 }

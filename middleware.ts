@@ -12,6 +12,7 @@ const unauthenticatedRoutes = [
   "/_next/", // next.js assets
   "/api/auth/login",
   "/auth/login",
+  "/auth/register"
 ];
 
 function redirectToLogin(req: NextRequest, prev: string | null = null) {
