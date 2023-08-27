@@ -6,8 +6,10 @@ export const metadata: Metadata = {
 };
 
 export default function Register() {
-  return <>
-    <h1 className="mb-4 text-2xl font-bold">Register</h1>
-    <RegisterForm />
-  </>
+  return (
+    <>
+      <h1 className="mb-4 text-2xl font-bold">Register</h1>
+      <RegisterForm />
+    </>
+  );
 }
