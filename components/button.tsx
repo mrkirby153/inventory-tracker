@@ -1,3 +1,6 @@
+import { classes, conditionallyAddClass } from "@app/utils";
+import { forwardRef } from "react";
+
 export enum ButtonStyle {
   Primary = "primary",
   Secondary = "secondary",
@@ -24,13 +27,20 @@ const disabledColors = {
   [ButtonStyle.Danger]: "bg-red-300 cursor-not-allowed",
 };
 
-export function Button(props: ButtonProps) {
-  const { className, buttonStyle, disabled, ...rest } = props;
-  const colorClass = !disabled
-    ? colors[props.buttonStyle]
-    : disabledColors[props.buttonStyle];
-  const actualClasses =
-    (className || "") +
-    `py-2 px-4 text-white rounded ${colorClass} inline-block`;
-  return <button className={actualClasses} disabled={disabled} {...rest} />;
-}
+const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+  const { className, buttonStyle, ...rest } = props;
+  const actualClasses = classes(
+    className || "",
+    "py-2 px-4 text-white rounded",
+    conditionallyAddClass(
+      props.disabled,
+      disabledColors[buttonStyle],
+      colors[buttonStyle],
+    ),
+    "inline-block",
+  );
+  return <button className={actualClasses} ref={ref} {...rest} />;
+});
+Button.displayName = "Button";
+
+export default Button;

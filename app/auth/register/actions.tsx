@@ -1,9 +1,9 @@
 "use server";
 
 import { registerSchema } from "@app/requests/auth";
+import z from "zod";
 
-export async function handleRegister(formData: FormData) {
-  let data = Object.fromEntries(formData);
-  registerSchema.parse(data);
-  console.log(data);
+export async function handleRegister(data: z.infer<typeof registerSchema>) {
+  console.log("handleRegister!");
+  console.log("data", data);
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, ButtonStyle } from "@app/components/button";
+import Button, { ButtonStyle } from "@app/components/button";
 import { Input } from "@app/components/input";
 import { useRouter } from "next/navigation";
 import { useState } from "react";

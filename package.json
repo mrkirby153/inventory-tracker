@@ -19,6 +19,7 @@
     "bcrypt": "^5.1.1",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.12",
+    "invariant": "^2.2.4",
     "jose": "^4.14.4",
     "lodash": "^4.17.21",
     "next": "13.4.12",
@@ -31,6 +32,7 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
+    "@types/invariant": "^2.2.35",
     "@types/lodash": "^4.14.197",
     "eslint-config-prettier": "^9.0.0",
     "prettier": "3.0.2",

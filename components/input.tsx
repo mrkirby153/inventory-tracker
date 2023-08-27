@@ -16,10 +16,7 @@ export function Input({ label, name, error, ...rest }: InputProps) {
       "border-red-500",
       "border-gray-500",
     ),
-    "px-2 py-1 text-lg",
-    {
-      "bg-gray-200": rest.disabled,
-    },
+    "px-2 py-1 text-lg disabled:bg-gray-200",
   );
 
   return (
