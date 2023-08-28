@@ -1,4 +1,4 @@
-import { getCurrentUser } from "@app/auth/helpers";
+import { getCurrentUser, optionallyGetCurrentUser } from "@app/auth/helpers";
 import Login from "./loginComponent";
 import { redirect } from "next/navigation";
 import { Metadata } from "next";
@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 export default async function LoginPage() {
-  const currentUser = await getCurrentUser(false);
+  const currentUser = await optionallyGetCurrentUser();
 
   if (currentUser) {
     redirect("/");
@@ -19,7 +19,9 @@ export default async function LoginPage() {
       <h1 className="mb-4 text-2xl font-bold">Log In</h1>
       <Login />
       <span className="mt-2 block hover:underline">
-        <a href="/auth/register" className="text-blue-500">Register</a>
+        <a href="/auth/register" className="text-blue-500">
+          Register
+        </a>
       </span>
     </>
   );
