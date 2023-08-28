@@ -11,6 +11,9 @@
     "prisma-studio": "prisma studio --browser none"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@prisma/client": "^5.1.1",
     "@types/node": "20.4.5",
     "@types/react": "18.2.18",
