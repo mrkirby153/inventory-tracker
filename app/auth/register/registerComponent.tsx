@@ -7,6 +7,7 @@ import FormButton from "@app/components/form/button";
 import { registerSchema } from "@app/requests/auth";
 import { useState } from "react";
 import z from "zod";
+import Link from "next/link";
 
 function RegistrationComplete() {
   return (
@@ -14,9 +15,9 @@ function RegistrationComplete() {
       <h3 className="font-bold">Success!</h3>
       <p>
         Registration Complete. You can now{" "}
-        <a href="/auth/login" className="underline">
+        <Link href="/auth/login" className="underline">
           Log In
-        </a>
+        </Link>
       </p>
     </div>
   );
