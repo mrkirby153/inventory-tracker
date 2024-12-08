@@ -11,34 +11,34 @@
     "prisma-studio": "prisma studio --browser none"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.4.2",
-    "@fortawesome/free-solid-svg-icons": "^6.4.2",
-    "@fortawesome/react-fontawesome": "^0.2.0",
-    "@prisma/client": "^5.1.1",
+    "@fortawesome/fontawesome-svg-core": "^6.7.1",
+    "@fortawesome/free-solid-svg-icons": "^6.7.1",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@prisma/client": "^6.0.1",
     "@types/node": "20.4.5",
-    "@types/react": "18.2.18",
-    "@types/react-dom": "18.2.7",
+    "@types/react": "19.0.0",
+    "@types/react-dom": "19.0.0",
     "autoprefixer": "10.4.14",
     "bcrypt": "^5.1.1",
     "eslint": "8.46.0",
-    "eslint-config-next": "13.4.12",
+    "eslint-config-next": "15.0.4",
     "invariant": "^2.2.4",
-    "jose": "^4.14.4",
+    "jose": "^4.15.9",
     "lodash": "^4.17.21",
-    "next": "13.4.12",
+    "next": "15.0.4",
     "postcss": "8.4.27",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "prisma": "^6.0.1",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
     "tailwindcss": "3.3.3",
     "typescript": "5.1.6",
-    "zod": "^3.22.2"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@types/bcrypt": "^5.0.0",
-    "@types/invariant": "^2.2.35",
-    "@types/lodash": "^4.14.197",
-    "eslint-config-prettier": "^9.0.0",
-    "prettier": "3.0.2",
-    "prisma": "^5.1.1"
+    "@types/bcrypt": "^5.0.2",
+    "@types/invariant": "^2.2.37",
+    "@types/lodash": "^4.17.13",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "3.0.2"
   }
 }

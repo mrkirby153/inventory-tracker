@@ -1,7 +1,7 @@
 "use client";
 import { forwardRef } from "react";
 import Button, { ButtonProps } from "../button";
-import { experimental_useFormStatus as useFormStatus } from "react-dom";
+import { useFormStatus } from "react-dom";
 
 const FormButton = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   let { pending } = useFormStatus();

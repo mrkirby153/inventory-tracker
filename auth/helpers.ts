@@ -9,8 +9,8 @@ import { User } from "@prisma/client";
 export const optionallyGetCurrentUser = cache(
   async (): Promise<User | null> => {
     let token: string | undefined;
-    const cookieStore = cookies();
-    const allHeaders = headers();
+    const cookieStore = await cookies();
+    const allHeaders = await headers();
     if (cookieStore.has("token")) {
       token = cookieStore.get("token")?.value;
     } else if (allHeaders.has("Authorization")) {

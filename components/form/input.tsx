@@ -3,7 +3,7 @@ import { forwardRef, useContext, useState } from "react";
 import { FormContext } from ".";
 import invariant from "invariant";
 import { Input } from "../input";
-import { experimental_useFormStatus as useFormStatus } from "react-dom";
+import { useFormStatus } from "react-dom";
 
 export interface FormInputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
